@@ -1,6 +1,8 @@
 <?php
 
-class TurbulenceTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class TurbulenceTest extends TestCase
 {
 	protected function setUp()
 	{

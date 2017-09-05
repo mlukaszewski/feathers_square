@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "php": ">=7.0",
-        "pdepend/pdepend": "2.5.0"
+        "pdepend/pdepend": "2.5.0",
+        "phpunit/phpunit": "^6.3"
     },
     "autoload": {
         "psr-4": {
@@ -21,5 +22,10 @@
     "minimum-stability": "stable",
     "config": {
         "bin-dir": "./bin"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "bin/phpunit"
+        ]
     }
 }

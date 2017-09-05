@@ -1,6 +1,6 @@
 Unstable, please do not use for a moment.
 -----------------------------------------
-This is a fork of @blerou work.
+This is a fork of [blerou](https://github.com/blerou/turbulence.php) work.
 
 ## Done
 * changed PDepend source - PEAR provides only version 1.1.14, now version 2.5.0 will be used (with PHP7 support).
@@ -9,6 +9,12 @@ This is a fork of @blerou work.
 ## TODO
 * executing PDepend as part of PHP stack, not an external process.https://github.com/mlukaszewski/feathers_square.git
 
+
+## installation (with composer)
+
+```
+composer create-project mlukaszewski/feathers_square
+```
 
 Hopefully-meaningful Metrics
 ----------------------------
