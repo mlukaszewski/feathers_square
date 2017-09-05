@@ -47,3 +47,9 @@ Dependencies
 ------------
 
 It uses [PDepend](http://pdepend.org/) to calculate complexity.
+
+use composer to install this dependency:
+
+```
+composer install
+```
