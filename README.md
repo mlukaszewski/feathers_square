@@ -7,10 +7,11 @@ This is a fork of [blerou](https://github.com/blerou/turbulence.php) work.
 * added -ignore options (for PDepend)
 
 ## TODO
-* executing PDepend as part of PHP stack, not an external process.https://github.com/mlukaszewski/feathers_square.git
+* executing PDepend as part of PHP stack, not an external process.
+* fix Unit Tests, write new one (goal: coverage of all APIs)
 
 
-## installation (with composer)
+## Installation (with composer)
 
 ```
 composer create-project mlukaszewski/feathers_square
