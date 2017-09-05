@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "turbulence\\": "src"
+            "turbulence\\": "src/turbulence"
         }        
     },
     "license": "MIT",

@@ -1,7 +1,5 @@
-#!/usr/bin/env php
 <?php
-
-register_autoloader();
+require_once "./vendor/autoload.php";
 
 use turbulence\Logger;
 use turbulence\Collector;
