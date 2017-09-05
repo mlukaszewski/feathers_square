@@ -1,5 +1,6 @@
 {
-    "name": "Feathers Square for PHP",
+    "name": "Feathers_Square_for_PHP",
+    "description": "Feathers Square for PHP",
     "type": "project",
     "require": {
         "pdepend/pdepend": "2.5.0"
