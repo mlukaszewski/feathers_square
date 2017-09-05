@@ -16,6 +16,7 @@ $params = parse_params($_SERVER['argv']);
 $repoDir    = realpath($params['repo']);
 $outputDir  = rtrim($params['out'], '/');
 $path       = $params['path'];
+$ignore     = $params['ignore'];
 
 $logger = new Logger();
 $result = new Collector();
@@ -27,7 +28,7 @@ if (!is_dir($outputDir))
 	mkdir($outputDir);
 
 $logger->log('calculating complexity...');
-$complexity = new Complexity($repoDir, $path);
+$complexity = new Complexity($repoDir, $path, $ignore);
 $result     = $complexity->calculate($result);
 $logger->log('calculating changes...');
 $changes    = new Changes($scm, $path);
@@ -61,12 +62,12 @@ function parse_params($args) {
 	$params    = array();
 	$usageText = <<<EOB
 
-Usage: turbulence -repo=REPOSITORY_DIR -out=OUTPUT_DIR [-path=PATH_IN_THE_REPO]
+Usage: turbulence -repo=REPOSITORY_DIR -out=OUTPUT_DIR [-path=PATH_IN_THE_REPO] [-ignore=<DIR_IN_REPO[,...]>]
 
 
 EOB;
 	foreach (array_slice($args, 1) as $arg) {
-		if (!preg_match('/^-(repo|path|out)=?(.*)$/', $arg, $match)) {
+		if (!preg_match('/^-(repo|path|out|ignore)=?(.*)$/', $arg, $match)) {
 			die($usageText);
 		}
 

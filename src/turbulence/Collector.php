@@ -55,11 +55,12 @@ class Collector
 	 */
 	public function changes($fileName, $noc)
 	{
-		if (!isset($this->map[$fileName]))
+		if (!isset($this->map[$fileName])) {
 			return;
+		}
 
 		$className = $this->map[$fileName];
-		$this->prepareClass($className);
+		$this->prepareClass($className);		
 		$this->result[$className][0] += $noc;
 	}
 
@@ -84,6 +85,7 @@ class Collector
 	 */
 	public function dumpJson($file)
 	{
+		// echo var_export($this->result, true).PHP_EOL;
 		file_put_contents($file, json_encode($this->result));
 	}
 

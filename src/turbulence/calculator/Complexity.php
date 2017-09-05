@@ -27,16 +27,19 @@ class Complexity
 	 */
 	private $repoDir;
 
+	private $ignoreDirs;
+
 	/**
 	 * Constructor
 	 *
 	 * @param string $repoDir the repository bsae
 	 * @param string $path    the target directory
 	 */
-	public function __construct($repoDir, $path)
+	public function __construct($repoDir, $path, $ignore)
 	{
 		$this->repoDir = $repoDir;
 		$this->path    = $path;
+		$this->ignoreDirs = $ignore;
 	}
 
 	/**
@@ -52,9 +55,14 @@ class Complexity
 
 		foreach ($logXml->package as $package) {
 			foreach ($package->class as $class) {
-				$fileName  = str_replace($this->repoDir.'/', '', $class->file['name']);
+				$fileName  = str_replace([
+					$this->repoDir.DIRECTORY_SEPARATOR,
+					DIRECTORY_SEPARATOR
+				], [
+					'',
+					"/"
+				], $class->file['name']);
 				$className = (string) $class['name'];
-
 				$result->classMap($fileName, $className);
 
 				$nom = (int) $class['nom'];
@@ -76,9 +84,29 @@ class Complexity
 	{
 		$logFile = tempnam(sys_get_temp_dir(), 'pdepend_');
 
-		`pdepend --summary-xml={$logFile} {$this->repoDir}/{$this->path}`;
+		echo "exec pdepend writes to ".$logFile.PHP_EOL;
+		$pdependFileExtension = DIRECTORY_SEPARATOR === "/"?"":".bat";
+		exec("bin".DIRECTORY_SEPARATOR."pdepend".$pdependFileExtension." --summary-xml={$logFile} --without-annotations --ignore={$this->getIgnoreDirs()} {$this->repoDir}/{$this->path}");
 
-		return simplexml_load_file($logFile);
+		$logContent = simplexml_load_file($logFile);
+		unlink($logFile);
+
+		return $logContent;
+	}
+
+	private function getIgnoreDirs()
+	{
+		$ignoreDirs = explode(",", $this->ignoreDirs);
+		if ($ignoreDirs === 0) {
+			return "";
+		}
+
+		return implode(",", array_map(
+			function($item) {
+				return $this->repoDir."/".$item;
+			},
+			$ignoreDirs
+		));
 	}
 }
 

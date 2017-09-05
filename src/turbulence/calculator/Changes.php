@@ -51,6 +51,9 @@ class Changes
 		$changes = $this->scm->changes();
 
 		foreach ($changes as $change) {
+			if (strlen($this->targetDir) === 0) {
+				continue;
+			}
 			if (false === strpos($change, $this->targetDir))
 				continue;
 			list($added, $removed, $fileName) = preg_split('/\\t/', $change);

@@ -1,3 +1,15 @@
+Unstable, please do not use for a moment.
+-----------------------------------------
+This is a fork of @blerou work.
+
+## Done
+* changed PDepend source - PEAR provides only version 1.1.14, now version 2.5.0 will be used (with PHP7 support).
+* added -ignore options (for PDepend)
+
+## TODO
+* executing PDepend as part of PHP stack, not an external process.https://github.com/mlukaszewski/feathers_square.git
+
+
 Hopefully-meaningful Metrics
 ----------------------------
 
@@ -25,7 +37,6 @@ Example
 
 Let's create the metrics of Twig template engine:
 
-		pear install pear.pdepend.org/PHP_Depend-beta
 		git clone git://github.com/blerou/turbulence.php.git
 		git clone git://github.com/fabpot/Twig.git
 		turbulence.php/bin/turbulence_php -repo=Twig -out=/tmp/Twig -path=lib
@@ -36,7 +47,3 @@ Dependencies
 ------------
 
 It uses [PDepend](http://pdepend.org/) to calculate complexity.
-
-		pear channel-discover pear.pdepend.org
-		pear install pdepend/PHP_Depend-beta
-
