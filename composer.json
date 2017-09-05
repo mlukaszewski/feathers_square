@@ -1,8 +1,9 @@
 {
-    "name": "feathers_square",
+    "name": "mlukaszewski/feathers_square",
     "description": "Feathers Square for PHP",
     "type": "project",
     "require": {
+        "php": ">=7.0",
         "pdepend/pdepend": "2.5.0"
     },
     "autoload": {
@@ -14,7 +15,7 @@
     "authors": [
         {
             "name": "Michal Lukaszewski",
-            "email": "michal.lukaszewski@intel.com"
+            "email": "mlukaszewski@gmail.com"
         }
     ],
     "minimum-stability": "stable",
