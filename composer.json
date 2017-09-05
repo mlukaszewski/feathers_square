@@ -1,5 +1,5 @@
 {
-    "name": "mlukasze/turbulence",
+    "name": "Feathers Square for PHP",
     "type": "project",
     "require": {
         "pdepend/pdepend": "2.5.0"
